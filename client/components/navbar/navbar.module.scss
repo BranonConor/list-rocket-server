@@ -7,7 +7,7 @@
     width: 100%;
     background: $space2;
     color: $light-font;
-    padding: 8px 8px 8px 8px;
+    padding: $none;
     height: 100%;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .menu {
-    height: 100%;
+    margin: 16px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -75,6 +75,7 @@
             height: 75px;
             @extend %col-center;
             overflow: hidden;
+            transition: 0.10s ease all;
 
             &:hover svg {
                 animation: bounce 0.25s linear 1;
@@ -83,66 +84,14 @@
 
             &:hover {
                 cursor: pointer;
+                box-shadow: $btn-shadow-inset;
             }
-        }
-    }
-}
 
-.galaxy {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 75px;
-    height: 100%;
-
-    .star {
-        width: 3px;
-        height: 3px;
-        border-radius: 100%;
-        background: white;
-        position: absolute;
-        z-index: -1;
-        opacity: 0;
-        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-
-        &:nth-of-type(1) {
-            top: 0;
-            animation: stars 10s infinite linear;
-        }
-        &:nth-of-type(2) {
-            top: 0;
-            animation: stars 13s infinite linear;
-            left: 40%;
-        }
-        &:nth-of-type(3) {
-            top: 0;
-            animation: stars 10s infinite linear;
-        }
-        &:nth-of-type(4) {
-            top: 0;
-            right: 40%;
-            animation: stars 11s infinite linear;
-        }
-        &:nth-of-type(5) {
-            top: 0;
-            left: 37%;
-            animation: stars 19s infinite linear;
-        }
-        &:nth-of-type(6) {
-            top: 0;
-            right: 37%;
-            animation: stars 13s infinite linear;
-        }
-        &:nth-of-type(7) {
-            top: 0;
-            left: 20%;
-            animation: stars 22s infinite linear;
-        }
-        &:nth-of-type(8) {
-            top: 0;
-            right: 18%;
-            animation: stars 17s infinite linear;
+            a {
+                width: 100%;
+                height: 100%;
+                @extend %row-center;
+            }
         }
     }
 }

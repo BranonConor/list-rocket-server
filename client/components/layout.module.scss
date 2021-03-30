@@ -19,6 +19,7 @@
     box-sizing: border-box;
 }
 .main {
+    position: relative;
     width: calc(100% - 75px);
     height: 100%;
     padding: $padding-std;

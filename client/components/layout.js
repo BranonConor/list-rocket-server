@@ -1,3 +1,4 @@
+import Footer from '../components/footer'
 import Head from 'next/head'
 import Link from 'next/link'
 import Navbar from '../components/navbar/navbar'
@@ -30,6 +31,7 @@ const Layout = ({ children }) => {
             </header>
             <main className={styles.main}>
                 {children}
+                <Footer />
             </main>
         </div>
     </div>
