@@ -1,0 +1,18 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+/* ----------------------- STYLES --------------------------- */
+.button {
+    margin: 16px 32px;
+    background: $blue-bg;
+    @extend %btn-spacing;
+    @extend %btn-edge;
+    color: $light-bg;
+    text-decoration: none;
+    transition: 0.15s ease all;
+
+    &:hover {
+        box-shadow: none;
+        transform: translateY(1px);
+    }
+}
