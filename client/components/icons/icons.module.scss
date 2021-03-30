@@ -1,0 +1,13 @@
+@import '../../styles/animations.scss';
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.logo {
+    width: 30px;
+    animation: floating 3s infinite linear;
+    position: relative;
+    z-index: 5;
+}

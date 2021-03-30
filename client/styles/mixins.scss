@@ -1,0 +1,39 @@
+/* ---- CONTAINER FLEXBOX STYLES ---- */
+%row-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+%col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+%row-center-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+%col-top-left {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+/* ---- BUTTON SPACING ---- */
+%btn-spacing {
+    padding: 8px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+%btn-edge {
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.10); 
+    box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.10);
+}

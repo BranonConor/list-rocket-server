@@ -1,0 +1,54 @@
+@keyframes liftOff {
+    0% { 
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(64px);
+        opacity: 0;
+    }
+}
+
+@keyframes floating {
+    0% { 
+        transform: translateY(0px);
+    }
+    45% {
+        transform: translateY(5px) rotate(4deg);
+    }
+    55% {
+        transform: translateY(5px) rotate(-4deg);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1.00);
+    }
+    25% {
+        transform: scale(1.25);
+    }
+    50% {
+        transform: scale(1.10);
+    }
+    75% {
+        transform: scale(1.20);
+    }
+    100% {
+        transform: scale(1.20);
+    }
+}
+
+@keyframes stars {
+    0% { 
+        top: 0;
+        opacity: 0.4;
+    }
+    100% {
+        top: 100%;
+        opacity: 0.6;
+    }
+}
