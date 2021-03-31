@@ -6,7 +6,8 @@
     width: 100%;
     box-sizing: border-box;
     @extend %col-center;
-    background: $light-bg;
+    background: $dark-bg;
+    color: white;
 }
 .flexContainer {
     width: 100%;

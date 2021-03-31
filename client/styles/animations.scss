@@ -44,11 +44,39 @@
 
 @keyframes stars {
     0% { 
-        top: 0;
+        opacity: 0;
+    }
+    50% {
         opacity: 0.4;
     }
     100% {
-        top: 100%;
-        opacity: 0.6;
+        top: 150%;
+        opacity: 0;
+        transform: rotate(60deg);
+    }
+}
+
+@keyframes planet {
+    0% { 
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(800%);
+    }
+}
+@keyframes asteroids {
+    0% { 
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(1000%);
+    }
+}
+@keyframes rotate {
+    0% { 
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

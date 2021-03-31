@@ -1,3 +1,4 @@
+import AsteroidIcon from '../icons/asteroids'
 import HomeIcon from '../icons/home'
 import Link from 'next/link'
 import ListIcon from '../icons/list'
@@ -30,6 +31,20 @@ const Navbar = () => {
                         </Link>
                     </li>
                 </ul>
+            </div>
+
+            <div className={styles.planet}>
+                <div className={styles.star}></div>
+                <div className={styles.star}></div>
+                <div className={styles.star}></div>
+                <div className={styles.star}></div>
+                <div className={styles.star}></div>
+                <div className={styles.star}></div>
+            </div>
+
+            <div className={styles.asteroids}>
+                <AsteroidIcon/>
+                <AsteroidIcon/>
             </div>
         </div>
     )
