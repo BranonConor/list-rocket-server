@@ -24,7 +24,8 @@ passport.use(
         {
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
-            callbackURL: '/auth/google/callback'
+            callbackURL: '/auth/google/callback',
+            proxy: true
         }, async (accessToken, refreshToken, profile, done) => { //this step occurs when user hits /auth/google/callback, a code is exchanged for its corresponding Google profile
             const existingUser = await User.findOne({ googleId: profile.id });
             if(existingUser) {
