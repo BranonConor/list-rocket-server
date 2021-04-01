@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
+import LogoLight from '../components/icons/logo'
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
+          <LogoLight />
           <h1 className="title">
             Welcome to ListRocket!
           </h1>

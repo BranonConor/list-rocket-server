@@ -1,6 +1,6 @@
 import Footer from '../components/footer'
 import Head from 'next/head'
-import Link from 'next/link'
+import LogoLight from './icons/logo'
 import Navbar from '../components/navbar/navbar'
 import styles from './layout.module.scss'
 
