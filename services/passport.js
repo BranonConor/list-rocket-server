@@ -6,12 +6,15 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users'); //users model was appended to mongoose object in User.js model file
 
-//create cookie with ID for a session
+//create cookie with ID from database to send to client
 passport.serializeUser((user, done) => { //user comes from if/else statement of codeblock below in passport.use
-    done(null, user.id); //user.id is NOT the profile / google ID in our schema, it's a database-specific id created at each entry
+    done(null, user.id); //user.id is NOT the profile / google ID in our schema, it's a database-specific id created at each entry by Mongo
+    //turns user model instance into an id stuffed into a cookie sent to client
 });
-//get ID from cookie we created to retrieve full user info from database
+
+//when we receive a request from client, get ID from cookie to retrieve full user info from database
 passport.deserializeUser((id, done) => {
+    //turns an id from cookie into mongoose model instance for full profile
     User.findById(id)
     .then(user => {
         done(null, user);
@@ -19,8 +22,7 @@ passport.deserializeUser((id, done) => {
 });
 
 //Passport library config
-passport.use(
-    new GoogleStrategy(
+passport.use('google', new GoogleStrategy(
         {
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
