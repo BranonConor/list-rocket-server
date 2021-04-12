@@ -17,6 +17,7 @@ passport.deserializeUser((id, done) => {
     //turns an id from cookie into mongoose model instance for full profile
     User.findById(id)
     .then(user => {
+        console.log('User inside deserialize: ', user);
         done(null, user);
     })
 });
@@ -36,7 +37,10 @@ passport.use('google', new GoogleStrategy(
             else {
                 const newUser = await new User({
                     googleId: profile.id,
-                    name: profile.name.givenName
+                    firstName: profile.name.givenName,
+                    lastName: profile.name.familyName,
+                    email: profile.emails[0].value,
+                    photo: profile.photos[0].value
                 }).save();
                 
                 done(null, newUser); //All done, send user we created
