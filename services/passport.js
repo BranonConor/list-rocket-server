@@ -1,10 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const mongoose = require('mongoose');
 const keys = require('../config/keys');
-
-
-const User = mongoose.model('users'); //users model was appended to mongoose object in User.js model file
+const User = require('../models/User');
 
 //create cookie with ID from database to send to client
 passport.serializeUser((user, done) => { //user comes from if/else statement of codeblock below in passport.use

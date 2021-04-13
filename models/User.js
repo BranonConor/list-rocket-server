@@ -6,7 +6,15 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    photo: String
+    photo: String,
+    events: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'events'
+        }
+    ]
 });
 
-mongoose.model('users', userSchema);
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
