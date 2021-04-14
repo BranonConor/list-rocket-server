@@ -14,7 +14,6 @@ passport.deserializeUser((id, done) => {
     //turns an id from cookie into mongoose model instance for full profile
     User.findById(id)
     .then(user => {
-        console.log('User inside deserialize: ', user);
         done(null, user);
     })
 });

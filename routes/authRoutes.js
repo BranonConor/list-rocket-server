@@ -22,7 +22,6 @@ module.exports = (app) => {
     app.get('/api/current_user', (req, res) => {
         res.header('Access-Control-Allow-Credentials', true);
         res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-        console.log('User route: ', req.user);
         res.send(req.user); //user is appended to request object from passport code (deserialize) if user is authenticated
     });
 }
