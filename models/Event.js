@@ -20,4 +20,6 @@ const eventSchema = new Schema({
     ]
 });
 
-mongoose.model('events', eventSchema);
+const Event = mongoose.model('Event', eventSchema);
+
+module.exports = Event;
