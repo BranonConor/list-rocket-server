@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 const eventSchema = new Schema({
     name: String,
     creator: {
-        type: Schema.Types.ObjectID
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     },
     collaborators: [
         {
