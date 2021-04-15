@@ -9,6 +9,7 @@ module.exports = (app) => {
         //Create new event with request details
         const event = await new Event({
             name: req.body.name,
+            description: req.body.description,
             creator: req.body.creator
         });
         await event.save();
@@ -23,9 +24,25 @@ module.exports = (app) => {
     app.get('/api/events/all', async (req, res) => {
         res.header('Access-Control-Allow-Credentials', true);
         res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+        if(req.user) {
+            const user = await User.findById(req.user._id).populate('events');
+            res.send(user.events);
+        } else {
+            const user = {
+                events: []
+            };
+            res.send(user.events);
+        }
+    })
 
-        const user = await User.findById(req.user._id).populate('events');
-        res.send(user.events);
+    //GET AN EVENT
+    app.get('/api/events/:id', async (req, res) => {
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+        const event = await Event.findById(req.params.id).populate({ path:"creator", model:"users" });
+        console.log(event);
+        res.send(event);
     })
 
     // DELETE AN EVENT
@@ -38,9 +55,10 @@ module.exports = (app) => {
         const user = await User.findById(event.creator);
 
         //Find the event in the user's events array and remove it
-        user.events = user.events.filter(item => item === event._id);
+        user.events = user.events.filter(item => {
+            return item != req.params.id;
+        });
         await user.save();
-        
         //Now delete the event itself
         await Event.findByIdAndDelete(req.params.id);
 
