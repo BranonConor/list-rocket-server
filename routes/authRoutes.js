@@ -11,15 +11,17 @@ module.exports = (app) => {
     
     //Oauth auth profile retrieval route
     app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-        res.send(req.user);
+        res.redirect('http://localhost:3000/dashboard');
     });
 
     app.get('/api/logout', (req, res) => {
         req.logout();
-        res.send(req.user);
+        res.redirect('http://localhost:3000');
     });
     
     app.get('/api/current_user', (req, res) => {
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
         res.send(req.user); //user is appended to request object from passport code (deserialize) if user is authenticated
     });
 }
