@@ -1,11 +1,12 @@
 const Event = require('../models/Event');
 const User = require('../models/User');
+const keys = require('../config/keys');
 
 module.exports = (app) => {
 
     app.post('/api/events/new', async (req, res) => {
         res.header('Access-Control-Allow-Credentials', true);
-        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+        res.header('Access-Control-Allow-Origin', keys.clientDomain);
         //Create new event with request details
         const event = await new Event({
             name: req.body.name,
@@ -23,7 +24,7 @@ module.exports = (app) => {
 
     app.get('/api/events/all', async (req, res) => {
         res.header('Access-Control-Allow-Credentials', true);
-        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+        res.header('Access-Control-Allow-Origin', keys.clientDomain);
         if(req.user) {
             const user = await User.findById(req.user._id).populate('events');
             res.send(user.events);
@@ -38,7 +39,7 @@ module.exports = (app) => {
     //GET AN EVENT
     app.get('/api/events/:id', async (req, res) => {
         res.header('Access-Control-Allow-Credentials', true);
-        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+        res.header('Access-Control-Allow-Origin', keys.clientDomain);
 
         const event = await Event.findById(req.params.id).populate({ path:"creator", model:"users" });
         res.send(event);
@@ -47,7 +48,7 @@ module.exports = (app) => {
     // DELETE AN EVENT
     app.delete('/api/events/:id', async (req, res) => {
         res.header('Access-Control-Allow-Credentials', true);
-        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+        res.header('Access-Control-Allow-Origin', keys.clientDomain);
 
         //First, remove it from the events array of the Event's creator
         const event = await Event.findById(req.params.id);
