@@ -41,7 +41,6 @@ module.exports = (app) => {
         res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
 
         const event = await Event.findById(req.params.id).populate({ path:"creator", model:"users" });
-        console.log(event);
         res.send(event);
     })
 
